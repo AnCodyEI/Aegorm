@@ -39,7 +39,7 @@ func (repository *SRoleRepository) GetRoles() (roles models.Roles, err error) {
 }
 
 func (repository *SRoleRepository) CreateRole(name string, description string) (ID uint, err error) {
-	err = repository.Database.Create(&models.Role{Name: name, Description: description}).Error
+	err = repository.Database.FirstOrCreate(&models.Role{Name: name, Description: description}).Error
 	return
 }
 
